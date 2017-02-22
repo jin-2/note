@@ -1,6 +1,6 @@
 # Vue.js 동영상 강의 정리
 
-[TOC]
+## 동영상 강의 목록
 
 - Part 1: Introduction
     - [https://youtu.be/vzSjlLzGB1A](https://youtu.be/vzSjlLzGB1A)
@@ -300,6 +300,22 @@ plus: () => this.a++
 
 #### [Sample code - @click](https://jsfiddle.net/sujin/8efubvvx/2/)
 
+```javascript
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Event Handling',
+    url: '',
+    cleanUrl: ''
+  },
+  methods: {
+  	humanizeUrl: function () {
+    	this.cleanUrl = this.url.replace(/^http:\/\//, '');
+    }
+  }
+})
+```
+
 ## Computed Properties
 
 ### computed
@@ -319,11 +335,113 @@ Vue 인스턴스에 추가되는 계산된 속성입니다. 모든 getter와 set
 > In comparison, a method invocation will always run the function whenever a re-render happens.
 > 메소드 호출은 재 렌더링 할 때마다 항상 메소드를 호출합니다.
 
-> In cases where you do not want caching, use a method instead.
+> In cases where you do not want caching, use a method instead.  
 > 캐싱을 원하지 않는 경우 메소드를 사용하십시오.
 
 #### [Sample code - computed](https://jsfiddle.net/sujin/w4mjx3rv/2/)
 
+```javascript
+new  Vue({
+	el: '#app',
+  data: {
+  	level: '',
+    xp: 0
+  },
+  methods: {
+  	addXP: function() {
+    	return this.xp += 10;
+    },
+    decreaseXP: function() {
+    	return this.xp -= 10;
+    }
+  },
+  computed: {
+  	level: function() {
+    	if (this.xp >= 200) {
+      	return this.level = 'Pro';
+      } else if (this.xp >= 100) {
+      	return this.level = 'Intermediate';
+      } else if (this.xp >= 0) {
+      	return this.level = 'Beginner';
+      } else if (this.xp < 0) {
+      	return this.level = 'Give up';
+      }
+    }
+  }
+})
+```
+
 ## Getter & Setter Computed Properties
+computed 속성은 기본적으로 getter만 가지고 있지만, 필요한 경우 setter를 제공할 수 있습니다.
+
+```javascript
+new Vue({
+  el: '#app',
+  data: {
+    first: '',
+    last: '',
+    fullname: ''
+  },
+  computed: {
+    fullname: {
+      get: function() {
+        return this.first+' '+this.last
+      },
+      set: function(name) {
+        var name = name.split(' ')
+        this.first = name[0]
+        this.last = name[name.length - 1]
+      }
+    }
+  }
+})
+```
 
 ## AJAX to External API
+
+### 참고
+
+#### [axios](https://www.npmjs.com/package/axios)
+
+```javascript
+// Make a request for a user with a given ID
+axios.get('/user?ID=12345')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+```
+
+- [HTTP 요청을 위한 axios](https://vuejs-kr.github.io/update/2017/01/04/http-request-with-axios/)
+
+#### [lodash](https://lodash.com/)
+
+- [함수 체인과 지연 실행](http://think.golbin.net/post/121402142691/%ED%95%A8%EC%88%98-%EC%B2%B4%EC%9D%B8%EA%B3%BC-%EC%A7%80%EC%97%B0-%EC%8B%A4%ED%96%89)
+- [Lodash의 지연 평가 소개 by Filip Zawada](http://www.haruair.com/blog/2983)
+- [throttle과 debounce](https://hyunseob.github.io/2016/04/24/throttle-and-debounce/)
+
+> `_.debounce`는 `_.throttle`과 마찬가지로 과다한 이벤트 로직 실행을 방지하기 위해 사용되는 함수이다. 바로 실행되는 `_.throttle`과는 달리 호출이 반복되는 동안에는 로직 실행을 방지하며, 호출이 멈춘 뒤, **설정한 시간이 지나고 나서야 로직을 실행** 하게 된다.
+
+```javascript
+// Avoid costly calculations while the window size is in flux.
+jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+
+// Invoke `sendMail` when clicked, debouncing subsequent calls.
+jQuery(element).on('click', _.debounce(sendMail, 300, {
+  'leading': true,
+  'trailing': false
+}));
+
+// Ensure `batchLog` is invoked once after 1 second of debounced calls.
+var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+var source = new EventSource('/stream');
+jQuery(source).on('message', debounced);
+
+// Cancel the trailing debounced invocation.
+jQuery(window).on('popstate', debounced.cancel);
+```
+
+## 그밖에
+- [Vue.js 한국어 사용자 모임](https://vuejs-kr.github.io/)
