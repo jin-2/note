@@ -399,9 +399,65 @@ new Vue({
 
 ## AJAX to External API
 
+### [Sample code - 우편번호를 체크하여 지역 확인(jsfiddle에서는 소스코드만 확인가능.)](https://jsfiddle.net/sujin/2d6fbmcf/3/)
+
+### watch
+**대부분의 경우 `computed` 속성이 더 적합**하지만 사용자 정의 감시자가 필요한 경우가 있습니다. 그래서 Vue는 `watch` 옵션을 통해 데이터 변경에 반응하는 보다 일반적인 방법을 제공합니다. 이는 데이터 변경에 대한 응답으로 **비동기식** 또는 시간이 많이 소요되는 조작을 수행하려는 경우에 가장 유용합니다.
+
+```javascript
+var app = new Vue({
+  el: '#app',
+  data: {
+    startingZip: '',
+    startingCity: '',
+    endingZip: '',
+    endingCity: ''
+  },
+  watch: {
+    startingZip: function() {
+      this.startingCity = ''
+      if (this.startingZip.length == 5) {
+        this.lookupStartingZip()
+      }
+    },
+    endingZip: function() {
+      this.endingCity = ''
+      if (this.endingZip.length == 5) {
+        this.lookupEndingZip()
+      }
+    }
+  },
+  methods: {
+    lookupStartingZip: _.debounce(function() {
+      var app = this
+      app.startingCity = "Searching..."
+      axios.get('http://ziptasticapi.com/' + app.startingZip)
+            .then(function (response) {
+              app.startingCity = response.data.city + ', ' + response.data.state
+            })
+            .catch(function (error) {
+              app.startingCity = "Invalid Zipcode"
+            })
+    }, 500),
+    lookupEndingZip: _.debounce(function() {
+      var app = this
+      app.endingCity = "Searching..."
+      axios.get('http://ziptasticapi.com/' + app.endingZip)
+            .then(function (response) {
+              app.endingCity = response.data.city + ', ' + response.data.state
+            })
+            .catch(function (error) {
+              app.endingCity = "Invalid Zipcode"
+            })
+    }, 500)
+  }
+})
+```
 ### 참고
 
 #### [axios](https://www.npmjs.com/package/axios)
+
+- [HTTP 요청을 위한 axios](https://vuejs-kr.github.io/update/2017/01/04/http-request-with-axios/)
 
 ```javascript
 // Make a request for a user with a given ID
@@ -413,8 +469,6 @@ axios.get('/user?ID=12345')
     console.log(error);
   });
 ```
-
-- [HTTP 요청을 위한 axios](https://vuejs-kr.github.io/update/2017/01/04/http-request-with-axios/)
 
 #### [lodash](https://lodash.com/)
 
