@@ -122,7 +122,7 @@ var app = new Vue({
 ### v-cloak
 이 디렉티브는 Vue 인스턴스가 **컴파일을 완료할 때까지 엘리먼트에 남아있습니다.** [v-cloak] { display: none }와 같은 CSS규칙과 함께 이 디렉티브는 Vue인스턴스가 준비될 때까지 컴파일되지 않은 mustache 바인딩을 숨기는데 사용할 수 있습니다. **(조심히 써야한다.)**
 
-```
+```html
 <style>
 [v-cloak] {
     background-color: red;
@@ -180,7 +180,7 @@ var app = new Vue({
 
 #### `in` 대신에  `of` 를 구분자로 사용할 수 있습니다.
 
-```
+```html
 <div v-for="item of items"></div>
 ```
 
@@ -284,6 +284,59 @@ var app = new Vue({
 <!-- the click event will be triggered at most once -->
 <button v-on:click.once="doThis"></button>
 ```
+
+### Event Modifiers
+이벤트 핸들러 내부에서 event.preventDefault() 또는 event.stopPropagation()를 호출하는 것은 매우 보편적인 일입니다.  Vue는 v-on 이벤트에 이벤트 수식어 를 제공합니다. 수식어는 점으로 표시된 접미사 입니다.
+
+- `.stop`
+- `.prevent`
+- `.capture`
+- `.self`
+- `.once`
+
+```html
+<!-- 클릭 이벤트 전파가 중단됩니다 -->
+<a v-on:click.stop="doThis"></a>
+
+<!-- 제출 이벤트가 페이지를 다시 로드 하지 않습니다 -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- 수식어는 체이닝 가능합니다 -->
+<a v-on:click.stop.prevent="doThat"></a>
+
+<!-- 단순히 수식어만 사용할 수 있습니다 -->
+<form v-on:submit.prevent></form>
+
+<!-- 이벤트 리스너를 추가할 때 캡처모드를 사용합니다 -->
+<div v-on:click.capture="doThis">...</div>
+
+<!-- event.target이 엘리먼트 자체인 경우에만 트리거를 처리합니다 -->
+<!-- 자식 엘리먼트에서는 안됩니다 -->
+<div v-on:click.self="doThat">...</div>
+
+<!-- 클릭 이벤트는 최대 한번만 트리거 됩니다. -->
+<!-- .once는 컴포넌트 이벤트에서도 사용할 수 있습니다. -->
+<a v-on:click.once="doThis"></a>
+```
+
+### Key Modifiers
+모든 keyCode들을 기억하는 것은 번거롭기 때문에 Vue는 가장 일반적으로 사용되는 키의 별칭을 제공합니다.
+
+```
+<!-- 약어 사용도 가능합니다 -->
+<input @keyup.enter="submit">
+<input @keyup.enter.space="submit">
+```
+
+- `.enter`
+- `.tab`
+- `.delete (“Delete” 와 “Backspace” 키 모두를 캡처합니다)`
+- `.esc`
+- `.space`
+- `.up`
+- `.down`
+- `.left`
+- `.right`
 
 ### methods
 Vue 인스턴스에 추가할 메소드입니다. VM 인스턴스를 통해 직접 접근하거나 디렉티브 표현식에서 사용할 수 있습니다. 모든 메소드는 자동으로 this 컨텍스트를 Vue 인스턴스에 바인딩합니다.
