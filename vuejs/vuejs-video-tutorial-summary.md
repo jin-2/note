@@ -212,6 +212,29 @@ var app = new Vue({
 </script>
 ```
 
+### Using JavaScript Expressions
+ Vue.js는 모든 데이터 바인딩 내에서 JavaScript 표현식의 모든 기능을 지원합니다.
+
+ ```html
+{{ number + 1 }}
+
+{{ ok ? 'YES' : 'NO' }}
+
+{{ message.split('').reverse().join('') }}
+
+<div v-bind:id="'list-' + id"></div>
+```
+
+한가지 제한사항은 각 바인딩에 하나의 단일 표현식 만 포함될 수 있으므로 아래처럼 작성하면 안됩니다.
+
+```
+<!-- 아래는 구문입니다, 표현식이 아닙니다. -->
+{{ var a = 1 }}
+
+<!-- 조건문은 작동하지 않습니다. 삼항 연산자를 사용해야 합니다. -->
+{{ if (ok) { return message } }}
+```
+
 ## 2-Way Binding
 
 ### v-model
