@@ -116,12 +116,6 @@ new Vue({
 })
 ```
 
-## Using Components
-
-파일이름은 대문자로 시작(카멜케이스로)
-
-- Home.vue -> ServerStatus.vue: locally component
-
 ## How to name your components Tags
 컴포넌트의 이름은 `<my-list>` 소문자와 대시로 작성을 하면 `<MyList>`처럼 카멜케이스로
 표현된다. 물론 `<MyList>`로 이름지어도 된다. 카멜케이스는 자바스크립트에서 많이 사용하므로
