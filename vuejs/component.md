@@ -65,6 +65,63 @@ export default {
 </script>
 ```
 
+## Creating Component
+
+- Home.vue: UI - 하나의 부모엘리먼트로 감싸야 한다.
+
+```javascript
+<template>
+    <header>
+        <h1>{{ title }}</h1>
+    </header>
+</template>
+
+<script>
+    export default {
+        data: function() {
+            return {
+                title: 'Server Status'
+            }
+        }
+    }
+</script>
+```
+
+- App.vue: Home.vue 컴퍼넌트를 감싸는 부모
+
+```javascript
+<template>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <c-header></c-header>
+            </div>
+        </div>
+    </div>
+</template>
+```
+
+- main.js: import home, Vue.component 선언
+
+```javascript
+import Vue from 'vue'
+import App from './App.vue'
+import Header from './Header.vue'
+
+Vue.component('c-header', Header);
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
+```
+
+## Using Components
+
+파일이름은 대문자로 시작(카멜케이스로)
+
+- Home.vue -> ServerStatus.vue: locally component
+
 ## How to name your components Tags
 컴포넌트의 이름은 `<my-list>` 소문자와 대시로 작성을 하면 `<MyList>`처럼 카멜케이스로
 표현된다. 물론 `<MyList>`로 이름지어도 된다. 카멜케이스는 자바스크립트에서 많이 사용하므로
