@@ -68,7 +68,9 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 ```
 
 ## [Validating "props"](https://kr.vuejs.org/v2/guide/components.html#Prop-검증)
-컴포넌트가 받는 중인 prop에 대한 요구사항을 지정할 수 있습니다. 요구사항이 충족 되지 않으면 Vue에서 경고를 내보냅니다. 이 기능은 다른 사용자가 사용할 컴포넌트를 제작할 때 특히 유용합니다.
+컴포넌트가 받는 중인 prop에 대한 요구사항을 지정할 수 있습니다. 요구사항이 충족
+되지 않으면 Vue에서 경고를 내보냅니다. 이 기능은 다른 사용자가 사용할 컴포넌트를
+제작할 때 특히 유용합니다.
 
 ```javascript
 Vue.component('example', {
@@ -102,4 +104,123 @@ Vue.component('example', {
     }
   }
 })
+```
+
+## $emit: Child => Parent
+
+**UserDetail.vue**
+
+```html
+<button @click="resetName">Reset Name</button>
+```
+
+```javascript
+export default {
+    props: ['myName'],
+    methods: {
+        switchName() {
+            return this.myName.split('').reverse().join('');
+        },
+        resetName() {
+            this.myName = 'bem';
+            this.$emit('nameWasReset', this.myName); // 부모에게 전달
+        }
+    }
+}
+```
+
+**User.vue**
+
+```html
+<app-user-detail :myName="name" @nameWasReset="name = $event"></app-user-detail>
+```
+
+## Communicating with Callback Functions
+
+**User.vue**
+
+```html
+<app-user-detail
+  :myName="name"
+  @nameWasReset="name = $event"
+  :resetFn="resetName"></app-user-detail>
+```
+
+```javascript
+methods: {
+  resetName() {
+    this.name='Max';
+  }
+}
+```
+
+**UserDetail.vue**
+
+```html
+<button @click="resetFn()"></button>
+```
+
+```javascript
+props: {
+  myName: {
+    type: String
+  },
+  resetFn: Function
+}
+```
+
+## Communication between Sibling Components
+자식들간의 데이터 교환이 어려움으로 부모를 통해 전달해야 한다.
+자식1 -> 부모 -> 자식2
+
+## Using an [Event Bus](https://vuejs-kr.github.io/jekyll/update/2017/02/13/vuejs-eventbus/) for Communication
+eventBus를 이용하면 부모에게 값을 전달하지 않고 자식간에 데이터를 교환할 수 있다.
+
+**main.js**
+
+```javascript
+export const eventBus = new Vue();
+```
+
+**UserEdit.vue**
+
+```javascript
+methods: {
+  editAge() {
+    this.userAge  = 30;
+    eventBus.$emit('ageWasEdited', this.userAge);
+  }
+}
+```
+
+**UserDetail.vue**
+
+```javascript
+export default {
+  created() {
+    eventBus.$on('ageWasEdited', (age) => {
+        this.userAge = age;
+      })
+  }
+}
+```
+
+## Centralizing Code in an Event Bus
+
+**main.js**
+
+```javascript
+export const eventBus = new Vue({
+  methods: {
+    changeAge(age) {
+      this.$emit('ageWasEdited', age);
+    }
+  }
+});
+```
+
+**UserEdit.vue**
+
+```javascript
+eventBus.changeAge(this.userAge)
 ```
