@@ -1,4 +1,4 @@
-# [Vue.js](https://kr.vuejs.org) 테스트하면서
+# [Tour of Vue.js 슬라이드 내용 메모](https://www.slideshare.net/sunhyouplee/tour-of-vuejs-70654520)
 
 ## Build Setup
 
