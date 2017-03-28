@@ -26,11 +26,12 @@ new Vue({
 ## Sass
 
 - [Sass 따로 설치](https://vuejs-kr.github.io/jekyll/update/2017/01/17/vuejs-external-css-library/) 후 적용해야 한다.
-- `*.vue` 파일의 스타일 블럭에 `lang='scss'` 속성을 추가한다.
 
 ```
 $ npm install sass-loader node-sass --save-dev
 ```
+
+- `*.vue` 파일의 스타일 블럭에 `lang='scss'` 속성을 추가한다.
 
 ## Custom theme
 
