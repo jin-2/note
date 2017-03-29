@@ -71,8 +71,24 @@ data: {
 <button @click="ingredients.push('spices')">Add New</button>
 ```
 
-super save? real unique value
-`:key="ingredient"`
+### [key](https://kr.vuejs.org/v2/guide/list.html#key) (`:key="ingredient"`)
+데이터 항목의 순서가 변경된 경우 항목의 순서와 일치하도록 DOM 요소를 이동하는 대신
+Vue는 각 요소를 적절한 위치에 패치하고 해당 인덱스에서 렌더링할 내용을 반영하는지 확인합니다.  
+
+Vue가 각 노드의 ID를 추적하고 기존 엘리먼트를 재사용하고 재정렬할 수 있도록 힌트를
+제공하려면 각 항목에 고유한 key 속성을 제공해야 합니다. key에 대한 이상적인 값은
+각 항목의 고유한 ID입니다.
+
+```html
+<div v-for="item in items" :key="item.id">
+  <!-- content -->
+</div>
+```
+
+반복되는 DOM 내용이 단순하지 않거나 의도적인 성능 향상을 위해 기본 동작에 의존하지
+않는한 가능하면 언제나 v-for에 key를 추가하는 것이 좋습니다.
+
+<!-- super save? real unique value -->
 
 ### array 체크해서 리스트 만들기
 

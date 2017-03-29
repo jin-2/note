@@ -174,6 +174,9 @@ props: {
 자식1 -> 부모 -> 자식2
 
 ## Using an [Event Bus](https://vuejs-kr.github.io/jekyll/update/2017/02/13/vuejs-eventbus/) for Communication
+
+> 데이터의 흐름을 쉽게 하기 위해 vuex라는 외부라이브러리가 있고, 메소드들을 서로 호출할 수 있도록 도와주는 EventBus라는 방법이 있습니다.
+
 eventBus를 이용하면 부모에게 값을 전달하지 않고 자식간에 데이터를 교환할 수 있다.
 
 **main.js**
