@@ -10,3 +10,4 @@
 - [Understanding the VueJS Instance](https://github.com/jin-2/note/blob/master/vuejs/instance.md)
 - [An Introduction to Components](https://github.com/jin-2/note/blob/master/vuejs/component.md)
 - [Communicating between Components](https://github.com/jin-2/note/blob/master/vuejs/communication.md)
+- [Advanced Component Usage - slot](https://github.com/jin-2/note/blob/master/vuejs/module.md)
