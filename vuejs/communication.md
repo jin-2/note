@@ -5,6 +5,8 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 있습니다. 부모는 props를 통해 자식에게 데이터를 전달하고, 자식은 events를 통해
 부모에게 메시지를 보냅니다.
 
+**부모**
+
 ```html
 <template>
     <div class="component">
@@ -46,6 +48,8 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 </script>
 ```
 
+**자식**
+
 ```html
 <template>
     <div class="component">
@@ -71,6 +75,26 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 컴포넌트가 받는 중인 prop에 대한 요구사항을 지정할 수 있습니다. 요구사항이 충족
 되지 않으면 Vue에서 경고를 내보냅니다. 이 기능은 다른 사용자가 사용할 컴포넌트를
 제작할 때 특히 유용합니다.
+
+```javascript
+props: {
+  myName: [String, Array],
+  myName: String,
+  myName: {
+    type: String,
+    //required: true,
+    default: 'Max'
+  },
+  myName: {
+    type: Object,
+    default: function() {
+      return {
+        name: 'Max'
+      }
+    }
+  }
+}
+```
 
 ```javascript
 Vue.component('example', {
