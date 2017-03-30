@@ -133,7 +133,7 @@ export default {
 }
 ```
 
-**User.vue**
+**User.vue**  
 네이티브 DOM 이벤트를 수신하면 메소드는 네이티브 이벤트를 유일한 전달인자로 받습니다. 인라인 구문을 사용하는 경우 명령문은 특별한 $event 속성에 접근할 수 있습니다: `v-on: click = "handle('ok', $event)"`
 
 ```html
