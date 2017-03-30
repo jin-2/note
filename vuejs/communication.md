@@ -77,26 +77,6 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 제작할 때 특히 유용합니다.
 
 ```javascript
-props: {
-  myName: [String, Array],
-  myName: String,
-  myName: {
-    type: String,
-    //required: true,
-    default: 'Max'
-  },
-  myName: {
-    type: Object,
-    default: function() {
-      return {
-        name: 'Max'
-      }
-    }
-  }
-}
-```
-
-```javascript
 Vue.component('example', {
   props: {
     // 기본 타입 확인 (`null` 은 어떤 타입이든 가능하다는 뜻입니다)
@@ -154,6 +134,7 @@ export default {
 ```
 
 **User.vue**
+네이티브 DOM 이벤트를 수신하면 메소드는 네이티브 이벤트를 유일한 전달인자로 받습니다. 인라인 구문을 사용하는 경우 명령문은 특별한 $event 속성에 접근할 수 있습니다: `v-on: click = "handle('ok', $event)"`
 
 ```html
 <app-user-detail :myName="name" @nameWasReset="name = $event"></app-user-detail>
