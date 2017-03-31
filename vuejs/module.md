@@ -141,10 +141,10 @@ export default {
 컴포넌트가 <keep-alive>내에서 토글 될 때, activated와 deactivated 라이프사이클 훅이 그에 따라 호출됩니다.
 
 keep-alive 감싸기 전
-![keep-alive 감싸기 전](./resource/keep-alive-before.jpg)
+![keep-alive 감싸기 전](./resource/keep-alive-before.JPG)
 
 keep-alive 감싼 후
-![keep-alive 감싼 후](./resource/keep-alive-after.jpg)
+![keep-alive 감싼 후](./resource/keep-alive-after.JPG)
 
 ```html
 <keep-alive>
