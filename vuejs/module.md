@@ -95,8 +95,6 @@ App.vue
 #### `<component>`, `:is`
 같은 마운트 포인트를 사용하고 예약된 <component> 엘리먼트를 사용하여 여러 컴포넌트 간에 동적으로 전환하고 is 속성에 동적으로 바인드 할 수 있습니다.
 
-이 예제에서는 `selectedComponent` 변경되면 컴퍼넌트가 변경됩니다.
-
 ```html
 <template>
   <div id="app">
@@ -132,4 +130,26 @@ export default {
   }
 }
 </script>
+```
+
+- 이 예제에서는 `selectedComponent` 값이 변경되면 컴퍼넌트가 변경됩니다.
+- 컴퍼넌트 행동은 만들어졌다 파괴된다.(컴퍼넌트에 변경되는 값은 저장이 되지 않는다.)
+- 이를 해결하는 방법은 `keep-alive`
+
+#### keep-alive
+동적 컴포넌트를 감싸는 경우 <keep-alive>는 비활성 컴포넌트 인스턴스를 파괴하지 않고 캐시합니다.
+컴포넌트가 <keep-alive>내에서 토글 될 때, activated와 deactivated 라이프사이클 훅이 그에 따라 호출됩니다.
+
+keep-alive 감싸기 전
+![keep-alive 감싸기 전](./resource/keep-alive-before.jpg)
+
+keep-alive 감싼 후
+![keep-alive 감싼 후](./resource/keep-alive-after.jpg)
+
+```html
+<keep-alive>
+  <component :is="selectedComponent">
+    <p>Default content</p>
+  </component>
+</keep-alive>
 ```
