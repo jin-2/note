@@ -76,6 +76,8 @@ Vue.js에서 부모-자식 컴포넌트 관계는 **props는 아래로, events �
 되지 않으면 Vue에서 경고를 내보냅니다. 이 기능은 다른 사용자가 사용할 컴포넌트를
 제작할 때 특히 유용합니다.
 
+- [Vue.js를 쓸 때의 모범 사례에 대해서 생각해보다. - Props의 타입 체크](http://realignist.me/code/2017/01/17/vue-js-best-practice.html#props--)
+
 ```javascript
 Vue.component('example', {
   props: {
@@ -141,6 +143,7 @@ export default {
 ```
 
 ## Communicating with Callback Functions
+부모에게 정의 된 function을 자식에게 props로 전달(이것을 왜 callback functions으로 제목을 달았을까?)  
 
 **User.vue**
 
