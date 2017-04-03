@@ -113,6 +113,10 @@ Vue.component('example', {
 ```
 
 ## $emit: Child => Parent
+ 문제가 발생했을 때 어떻게 부모에게 다시 알릴까요?
+
+ - `$on(eventName)`을 사용하여 이벤트를 감지 하십시오.
+ - `$emit(eventName)`을 사용하여 이벤트를 트리거 하십시오.
 
 **UserDetail.vue**
 
@@ -136,10 +140,21 @@ export default {
 ```
 
 **User.vue**  
-네이티브 DOM 이벤트를 수신하면 메소드는 네이티브 이벤트를 유일한 전달인자로 받습니다. 인라인 구문을 사용하는 경우 명령문은 특별한 $event 속성에 접근할 수 있습니다: `v-on: click = "handle('ok', $event)"`
+네이티브 DOM 이벤트를 수신하면 메소드는 네이티브 이벤트를 유일한 전달인자로 받습니다. 인라인 구문을 사용하는 경우 명령문은 특별한 $event 속성에 접근할 수 있습니다:
+
+```javascript
+v-on: click = "handle('ok', $event)"`
+```
 
 ```html
 <app-user-detail :myName="name" @nameWasReset="name = $event"></app-user-detail>
+```
+
+### 컴포넌트에 네이티브 이벤트 바인딩
+컴포넌트의 루트 엘리먼트에서 네이티브 이벤트를 수신하려는 경우가 있을 수 있습니다. 이러한 경우 v-on 에 `.native` 수식자를 사용할 수 있습니다. 예 :
+
+```html
+<my-component v-on:click.native="doTheThing"></my-component>
 ```
 
 ## Communicating with Callback Functions
