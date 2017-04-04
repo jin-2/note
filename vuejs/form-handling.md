@@ -44,9 +44,9 @@ v-model이 관리하는 input을 자동으로 trim
 ```
 
 ## Checkbox
-하나의 체크박스는 단일 boolean 값을 가집니다.  
-여러개의 체크박스는 같은 배열을 바인딩 할 수 있습니다.  
-(true, false했을 때의 값을 array로 전달한다.)
+- 하나의 체크박스는 단일 boolean 값을 가집니다.  
+- 여러개의 체크박스는 같은 배열을 바인딩 할 수 있습니다.  
+- (true, false했을 때의 값을 array로 전달한다.)
 
 **sendMail을 빈 배열로 지정했다.**
 ```javascript
@@ -84,8 +84,8 @@ export default {
 ```
 
 ## Radio
-라디오 버튼은 같은 v-model을 사용하게 되면 그룹지어진다.  
-`{{ gender }}` value 값을 출력한다.
+- 라디오 버튼은 같은 v-model을 사용하게 되면 그룹지어진다.  
+- `{{ gender }}` value 값을 출력한다.
 
 ```html
 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
@@ -157,7 +157,7 @@ export default {
 ```
 
 **Custom control**
-@input = @change ?? 
+@input = @change ??
 
 ```html
 <input
