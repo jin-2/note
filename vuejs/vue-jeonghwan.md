@@ -1,4 +1,4 @@
-# [Vue.js 살펴보기](http://blog.jeonghwan.net/vue/2017/03/27/vue.html)
+# [메모: Vue.js 살펴보기](http://blog.jeonghwan.net/vue/2017/03/27/vue.html)
 
 ## el
 Vue 생성자 함수로 뷰모델을 만드는데 이것이 Vue 인스턴스다. 이것은 자바스크립트 객체인데 내부적으로 연결될 템플릿이 필요하다. 그것을 el 키에 셀렉터 값으로 넣어주면 된다.
