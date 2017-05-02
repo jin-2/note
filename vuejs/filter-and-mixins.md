@@ -33,6 +33,11 @@ Vue.filter('to-lowercase', function(value) {
 
 ## Filters and Computed
 
+> PDF
+> 계산된 속성을 사용하여 배열을 필터링 할 수 있습니다. 그러면 다른 곳에서 필터링 된 결과에
+접근할 수 있으므로 깊이 있는 제어와 유연함을 제공합니다. 예를 들어 필터링 된 배열의 길이는
+코드의 어느 위치에서나 가져올 수 있습니다.
+
 ```html
 <template>
 	<div>
@@ -60,6 +65,23 @@ Vue.filter('to-lowercase', function(value) {
 		}
 	};
 </script>
+```
+
+### Lodash 의 orderBy 문법
+
+```javascript
+_.orderBy(collection, [iteratees=[_.identity]], [orders])
+```
+
+```html
+<div class=”container”>
+    <h1>Let’s hear some stories!</h1>
+    <ul class=”list-group”>
+        <li v-for=”story in _.orderBy(stories, [’upvotes’], [’desc’])”>
+            {{ story.writer }} said ”{{ story.plot }}” and upvoted {{ story.upvotes }} times.
+        </li>
+    </ul>
+</div>
 ```
 
 ## [Mixins](https://kr.vuejs.org/v2/guide/mixins.html)
