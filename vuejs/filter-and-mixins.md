@@ -156,3 +156,107 @@ Vue.mixin({
 ```
 
 ![vue-mixin-call](/assets/vue-mixin-call.png)
+
+## PDF 예제
+
+```html
+<template>
+  <div>
+    <h3>Alex’s stories</h3>
+    <ul class=”list-group”>
+      <li v-for="story in storiesBy('Alex')" class="list-group-item">
+        {{ story.writer }} said "{{ story.plot }}"
+      </li>
+    </ul>
+
+    <h3>John’s stories</h3>
+    <ul class=”list-group”>-->
+      <li v-for="story in storiesBy('John')" class="list-group-item">
+        {{ story.writer }} said "{{ story.plot }}"
+      </li>
+    </ul>
+
+    <h3>famous list: {{ famous.length }}</h3>
+    <ul class=”list-group”>
+      <li v-for="story in famous" class="list-group-item">
+        {{ story.writer }} said "{{ story.plot }}" and upvotes {{ story.upvotes }} times.
+      </li>
+    </ul>
+
+    <h3>search list: {{ famous.length }}</h3>
+    <label for="storySearch">story search</label>
+    <input type="text" id="storySearch" v-model="query">
+
+    <ul class=”list-group”>
+      <li v-for="story in search" class="list-group-item">
+        {{ story.writer }} said "{{ story.plot }}" and upvotes {{ story.upvotes }} times.
+      </li>
+    </ul>
+
+    <pre>
+      <!--{{ $data }}-->
+    </pre>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        stories: [
+          {
+            plot: 'I crashed my car today!',
+            writer: 'Alex',
+            upvotes: 28
+          },
+          {
+            plot: 'Yesterday, someone stole my bag!',
+            writer: 'John',
+            upvotes: 8
+          },
+          {
+            plot: 'Someone ate my chocolate...',
+            writer: 'John',
+            upvotes: 51
+          },
+          {
+            plot: 'I ate someone’s chocolate!',
+            writer: 'Alex',
+            upvotes: 74
+          }
+        ],
+        query: ' ' // 공백 필수
+      }
+    },
+    computed: {
+      famous: function() {
+        return this.stories.filter(function(item) {
+          return item.upvotes > 25;
+        });
+      },
+      search: function() {
+        var query = this.query;
+        return this.stories.filter(function(story) {
+          return story.plot.includes(query);
+        });
+      }
+    },
+    methods: {
+      storiesBy: function (writer) {
+        return this.stories.filter(function (story) {
+          return story.writer == writer;
+        });
+      }
+    }
+  }
+</script>
+
+<style lang="sass">
+.list-group-item
+  margin: 0.1em
+  padding: 0.5em
+  border: 1px solid #eee
+  border-radius: 5px
+  list-style: none
+</style>
+```
