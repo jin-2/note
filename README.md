@@ -15,3 +15,4 @@
 - [11. Handling User Input with Forms](https://github.com/jin-2/note/blob/master/vuejs/form-handling.md)
 - [12. Using and Creating Directives](https://github.com/jin-2/note/blob/master/vuejs/directives.md)
 - [13. Improving your App with Filters and Mixins](https://github.com/jin-2/note/blob/master/vuejs/filter-and-mixins.md)
+- [15. Connecting to Servers via Http - Using vue-resource](https://github.com/jin-2/note/blob/master/vuejs/vue-resource.md)
