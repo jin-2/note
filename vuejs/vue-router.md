@@ -242,7 +242,7 @@ export const routes = {
 <router-link tag="button" :to="'/user/' + $route.params.id + '/edit'" class="btn btn-primary">Edit User</router-link>
 ```
 
-### Router의 name 값으로 이동하기
+## Router의 name 값으로 이동하기
 
 - **router.js** 의 `name`을 정의
 
@@ -273,4 +273,98 @@ export default new Router({
 
 ```html
 <router-link tag="button" :to="{ name: 'userEdit', params: {id: $route.params.id} }" class="btn btn-primary">Edit User</router-link>
+```
+
+## query parameters 붙이기
+
+- 쿼리가 있으면 `/user/1/edit?locale=en&q=100` 링크 나온다.
+
+```html
+<template>
+  <div>
+    <h3>Some User Details</h3>
+    <router-link
+      tag="button"
+      class="btn btn-primary"
+      :to="{name: 'userEdit', params: {id: $route.params.id}, query: { locale: 'en', q: 100 }}">
+      Go Edit Page</router-link>
+  </div>
+</template>
+```
+
+- 쿼리를 수정(edit)화면에 출력하는 방법
+
+```html
+<template>
+    <div>
+      <h3>Edit the User</h3>
+      <p>Locale: {{ $route.query.locale }}</p>
+      <p>Analytics: {{ $route.query.q }}</p>
+    </div>
+</template>
+```
+
+## `<router-view>`에 [이름 붙여](https://router.vuejs.org/en/essentials/passing-props.html) 여러개 사용하기
+
+- `App.vue` 파일에 `<router-view>` 여러개 정의하고 `name` 붙인다.
+
+```html
+<template>
+  <div id="app">
+    <router-view name="header-top"></router-view>
+    <router-view></router-view>
+    <router-view name="header-bottom"></router-view>
+  </div>
+</template>
+```
+
+- `router.js`에 `components` 값을 정의한다.
+- hello 페이지에서는 header가 위로, user 페이지에서는 header 밑으로 위치한다.
+
+```javascript
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'Hello',
+      components: {
+        default: Hello,
+        'header-top': Header
+      }
+    },
+    {
+      path: '/user',
+      name: 'User',
+      components: {
+        default: User,
+        'header-bottom': Header
+      },
+      children: [
+        { path: '', component: UserStart },
+        { path: ':id', component: UserDetail },
+        { path: ':id/edit', component: UserEdit, name: 'userEdit' },
+    ]
+    }
+  ]
+})
+```
+
+## Redirecting
+
+- `router.js` 파일에 아래 코드를 추가하고 `redirect` 속성을 통해서 이동시킨다.
+
+```javascript
+{ path: '/something', redirect: '/' }
+```
+
+- 물론, name 값으로 정의할 수 있다.
+
+```javascript
+{ path: '/something', redirect: { name: 'user' } }
+```
+
+- `/something` 페이지가 아닌 다른 페이지(/aaa)들도 이동시키고 싶다면
+
+```javascript
+{ path: '*', redirect: '/' }
 ```
