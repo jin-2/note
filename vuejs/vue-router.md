@@ -503,3 +503,53 @@ leave 가드는 일반적으로 사용자가 저장하지 않은 편집 내용�
   }
 </script>
 ```
+
+## [Loading Routes Lazily](https://router.vuejs.org/kr/advanced/lazy-loading.html)
+- 번들러를 이용하여 앱을 제작할 때 JavaScript 번들이 상당히 커져 페이지로드 시간에
+영향을 줄 수 있습니다. 각 라우트의 컴포넌트를 별도의 단위로 분할하고 경로를
+방문할 때 로드하는 것이 효율적일 것입니다.
+- 크롬 개발자도구 네트워크 탭에서 확인할 수 있다.
+
+**router.js**
+- 라우트 컴포넌트를 비동기 컴포넌트로 정의
+- 같은 묶음으로 그룹화
+
+```javascript
+import Vue from 'vue'
+import Router from 'vue-router'
+import Home from '@/components/Home'
+// import User from '@/components/user/User'
+// import UserStart from '@/components/user/UserStart'
+// import UserDetail from '@/components/user/UserDetail'
+// import UserEdit from '@/components/user/UserEdit'
+
+Vue.use(Router)
+
+const User = resolve => {
+  require.ensure(['@/components/user/User.vue'], () => {
+    resolve(require('@/components/user/User.vue'));
+  }, 'user');
+};
+
+const UserStart = resolve => {
+  require.ensure(['@/components/user/UserStart.vue'], () => {
+    resolve(require('@/components/user/UserStart.vue'));
+  }, 'user');
+};
+
+const UserDetail= resolve => {
+  require.ensure(['@/components/user/UserDetail.vue'], () => {
+    resolve(require('@/components/user/UserDetail.vue'));
+  }, 'user');
+};
+
+const UserEdit = resolve => {
+  require.ensure(['@/components/user/UserEdit.vue'], () => {
+    resolve(require('@/components/user/UserEdit.vue'));
+  }, 'user');
+};
+
+export default new Router({
+  // ...
+})
+```
