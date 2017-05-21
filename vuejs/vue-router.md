@@ -368,3 +368,138 @@ export default new Router({
 ```javascript
 { path: '*', redirect: '/' }
 ```
+
+## [scrollBehavior](https://router.vuejs.org/kr/advanced/scroll-behavior.html)
+클라이언트 측 라우팅을 사용할 때 새로운 경로로 이동할 때 맨 위로 스크롤하거나
+실제 페이지를 다시 로드하는 것처럼 컨텐츠 항목의 스크롤 위치를 유지할 수 있습니다.  
+**참고: 이 기능은 HTML5 히스토리 모드에서만 작동합니다.**
+
+**main.js**
+
+```javascript
+const router = new VueRouter({
+  routes,
+  mode: 'history',
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+    if (to.hash) {
+      return { selector: to.hash }
+    }
+    return { x: 0, y: 0 }
+  }
+})
+```
+## [Navigation Guards](https://router.vuejs.org/kr/advanced/navigation-guards.html)
+네비게이션이 트리거될 때마다 가드가 작성 순서에 따라 호출되기 전의 모든 경우에
+발생합니다. 가드는 비동기식으로 실행 될 수 있으며 네비게이션은 모든 훅이 해결되기
+전까지 보류 중 으로 간주됩니다.
+
+### 전역가드: BeforeEach
+
+**항상 next 함수를 호출하십시오. 그렇지 않으면 훅이 절대 불러지지 않습니다.**
+
+- main.js
+
+```javascript
+router.beforeEach((to, from, next) => {
+  console.log('global beforeEach');
+  next();
+})
+```
+
+### 라우터 별 가드: beforeEnter
+
+beforeEnter 가드를 라우트의 설정 객체에 직접 정의 할 수 있습니다.
+
+```javascript
+export default new Router({
+  mode: 'history',
+  routes: [
+    {
+      path: '/user',
+      name: 'User',
+      component: User,
+      props: true,
+      children: [
+        { path: '', component: UserStart },
+        { path: ':id', component: UserDetail, beforeEnter: (to, from, next) => {
+          console.log('Inside router setup');
+          next();
+        } },
+        { path: ':id/edit', component: UserEdit, name: 'userEdit' },
+      ]
+    }
+  ]
+})
+```
+
+### 컴포넌트 내부 가드
+
+- beforeRouteEnter
+  - 렌더링하는 라우터 앞에 호출합니다.
+  - 이 가드가 생성될 때 아직 생성되지 않았기 때문에
+  - `this` 컴포넌트 인스턴스에 접근할 수 없습니다.
+- beforeRouteUpdate (2.2 버전에 추가)
+- beforeRouteLeave
+  - 이 컴포넌트를 렌더링하는 라우트가 이전으로 네이게이션 될 때 호출됩니다.
+  - `this` 컴포넌트 인스턴에 접근할 수 있습니다.
+
+#### `beforeRouteEnter`
+
+```javascript
+beforeRouteEnter(to, from, next) {
+    if (true) {
+        next();
+    } else {
+        next(false);
+    }
+}
+```
+
+- 콜백을 `next`에 전달하여 인스턴스에 액세스 할 수 있습니다.
+
+```javascript
+beforeRouteEnter (to, from, next) {
+  next(vm => {
+    // `vm`을 통한 컴포넌트 인스턴스 접근
+  })
+}
+```
+
+#### `beforeRouteLeave`
+leave 가드는 일반적으로 사용자가 저장하지 않은 편집 내용을 두고 실수로 라우트를
+떠나는 것을 방지하는데 사용됩니다.
+
+```html
+<template>
+  <div>
+    <h2>User Edit</h2>
+    <button class="btn btn-primary" @click="confirmed = true">Confirm {{ confirmed }} </button>
+    <div style="height: 700px;"></div>
+    <p id="data">hash area</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+        return {
+          confirmed: false
+        }
+    },
+    beforeRouteLeave(to, from, next) {
+      if (this.confirmed) {
+          next();
+      } else {
+          if (confirm('Are you sure?')) {
+            next();
+          } else {
+            next(false);
+          }
+      }
+    }
+  }
+</script>
+```
