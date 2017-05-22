@@ -1,4 +1,5 @@
 # VUEX
+props와 $emit을 이용했던 데이터를 vuex를 이용하여 전달하는 예제.
 
 - Parent: App.vue
 
