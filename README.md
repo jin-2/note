@@ -17,3 +17,4 @@
 - [13. Improving your App with Filters and Mixins](https://github.com/jin-2/note/blob/master/vuejs/filter-and-mixins.md)
 - [15. Connecting to Servers via Http - Using vue-resource](https://github.com/jin-2/note/blob/master/vuejs/vue-resource.md)
 - [16. Routing in a VueJS Application](https://github.com/jin-2/note/blob/master/vuejs/vue-router.md)
+- [17. Better State Management with Vuex](https://github.com/jin-2/note/blob/master/vuejs/vuex.md)
