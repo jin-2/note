@@ -1,5 +1,5 @@
 # VUEX
-props와 $emit을 이용했던 데이터를 vuex를 이용하여 전달하는 예제.
+props와 $emit을 전달했던 데이터를 vuex를 이용하여 전달하는 예제.
 
 - Parent: App.vue
 
@@ -148,9 +148,11 @@ export default {
 <app-counter></app-counter>
 ```
 
-## Using Getter
+## Using [Getter](https://vuex.vuejs.org/kr/getters.html)
 this.$store.state 값을 child.vue에 가져와서 다시 계산을 하여 값을 보여주는 것은
 성능에 안좋은가 보다. (내 추측- 찾아봐야함.)
+
+> 둘 이상의 컴포넌트가 이를 사용 해야하는 경우 함수를 복제하거나 공유된 헬퍼를 추출하여 여러 위치에서 가져와야합니다. 둘 다 이상적이지 않습니다.
 
 - before code: `Result.vue`
 여기서 $store에서 값을 가져와 2를 곱했다.
@@ -196,5 +198,112 @@ export default {
             return this.$store.getters.doubleCounter;
         }
     }
+}
+```
+
+## mapGetters
+mapGetters 헬퍼는 저장소 getter를 로컬 계산된 속성에 매핑합니다.
+
+### Info
+You can also pass an Object and map the Getters to different Names!
+
+### Example
+
+```
+mapGetters({
+  propertyName: 'doubleCounter'
+})
+```
+
+- `store.js`: `stringCounter` 내용을 추가한다.
+
+```javascript
+export const store = new Vuex.Store({
+  state: {
+    counter: 0
+  },
+  getters: {
+    doubleCounter: state => {
+      return state.counter * 2;
+    },
+    stringCounter: state => {
+      return state.counter + ' Clicks';
+    }
+  }
+});
+```
+
+- `AnotherResult.vue`에서 위의 내용을 보여준다.
+
+```html
+<template>
+  <div>
+    <p>Counter other is: {{ counter }}</p>
+    <p>Number of Clicks: {{ clicks }}</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    computed: {
+      counter() {
+        return this.$store.getters.doubleCounter;
+      },
+      clicks() {
+        return this.$store.getters.stringCounter;
+      }
+    }
+  }
+</script>
+```
+
+- 위의 내용을 `mapGetters`를 이용해서 바꾼다.
+
+```html
+<template>
+  <div>
+    <p>Counter other is: {{ doubleCounter }}</p>
+    <p>Number of Clicks: {{ stringCounter }}</p>
+  </div>
+</template>
+
+<script>
+  import { mapGetters } from 'vuex';
+  export default {
+    computed: mapGetters([
+        'doubleCounter',
+        'stringCounter'
+    ])
+  }
+</script>
+```
+
+- 위의 내용을 ES6 문법으로 바꾼다.
+
+```javascript
+export default {
+    computed: {
+      ...mapGetters([
+           'doubleCounter',
+           'stringCounter'
+         ])
+    }
+  }
+```
+
+- 패키지 설치
+
+```
+npm install --save-dev babel-preset-stage-2
+```
+
+- `.babelrc` 수정
+
+```
+{
+  "presets": [
+    ["es2015", {"modules": false}],
+    ["stage-2"]
+  ]
 }
 ```
