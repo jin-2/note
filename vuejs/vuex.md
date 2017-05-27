@@ -307,3 +307,100 @@ npm install --save-dev babel-preset-stage-2
   ]
 }
 ```
+
+## Understanding [Mutations](https://vuex.vuejs.org/kr/mutations.html)
+Vuex 저장소에서 실제로 상태를 변경하는 유일한 방법은 **변이(Mutations)** 하는 것입니다.
+
+- `store.js`에 `mutations`을 정의한다.
+
+```javascript
+mutations: {
+  increment: state => {
+    state.counter++;
+  },
+  decrement: state => {
+    state.counter--;
+  }
+}
+```
+
+- `Counter.vue` 파일에 정의되었던 `methods` 내용을 `$store.commit`을 이용하여 `mutations`에 등록한 내용을 호출한다.
+
+```javascript
+export default {
+    methods: {
+        increment() {
+            // this.$store.state.counter++;
+            this.$store.commit('increment');
+        },
+        decrement() {
+            // this.$store.state.counter--;
+            this.$store.commit('decrement');
+        }
+    }
+}
+```
+
+- `this.$store.commit` 이 코드마저 중복된다. 코드를 단축하면
+
+```javascript
+import { mapMutations } from 'vuex';
+export default {
+  methods: {
+    ...mapMutations([
+        'increment',
+        'decrement'
+      ])
+  }
+}
+```
+
+## [actions](https://vuex.vuejs.org/kr/actions.html)
+mutations을 동기화 시키려면 actions을 이용한다?
+
+- `store.js`에 `actions`를 정의한다.
+
+```javascript
+actions: {
+  increment: context => {
+    context.commit('increment');
+  }
+}
+```
+
+- ES6 문법으로 고치고 동기화할 수 있는 asyncIncrement를 정의한다.
+
+```javascript
+actions: {
+  increment: ({ commit }) => {
+    commit('increment');
+  },
+  decrement: ({ commit }) => {
+    commit('decrement');
+  },
+  asyncIncrement: ({ commit }) => {
+    setTimeOut(() => {
+      commit('increment');
+    }, 1000)
+  },
+  asyncDecrement: ({ commit }) => {
+    setTimeOut(() => {
+      commit('decrement');
+    }, 1000)
+  }
+}
+```
+
+- vue 페이지에서 mutations으로 정의되있던 부분을 수정한다.
+
+```javascript
+import { mapActions } from 'vuex';
+export default {
+  methods: {
+    ...mapActions([
+        'increment',
+        'decrement'
+      ])
+  }
+}
+```
