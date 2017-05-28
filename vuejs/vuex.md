@@ -404,3 +404,76 @@ export default {
   }
 }
 ```
+
+## 페이로드를 가진 커밋
+> mutations에 대해 payload라고 하는 store.commit에 추가 전달인자를 사용할 수 있습니다.
+
+### 예제 코드
+
+- `Counter.vue` file
+
+```html
+<button class="btn btn-primary" @click="increment(100)">Increment</button>
+```
+
+```javascript
+import { mapActions } from 'vuex';
+export default {
+  methods:
+  ...mapActions([
+      'increment',
+      'decrement'
+    ]),
+    // increment(by) {
+    //   this.$store.dispatch('increment', by)
+    // }
+  }
+}
+```
+
+- `store.js` 파일
+
+```javascript
+mutations: {
+  increment: (state, payload) => {
+    state.counter += payload;
+  },
+  decrement: state => {
+    state.counter -= payload;
+  }
+},
+actions: {
+  increment: ({ commit }, payload) => {
+    commit('increment', payload);
+  },
+  decrement: ({ commit }, payload) => {
+    commit('decrement', payload);
+  }
+  // ...
+}
+```
+
+### 예제 코드
+
+- 추가 예제
+
+- `AnotherCounter.vue`
+
+```html
+<button class="btn btn-primary" @click="asyncIncrement({by: 50, duration: 500})">Increment</button>
+```
+
+- store.js
+
+```javascript
+asyncIncrement: ({ commit }, payload) => {
+  setTimeOut(() => {
+    commit('increment', payload.by);
+  }, payload.duration)
+},
+asyncDecrement: ({ commit }) => {
+  setTimeOut(() => {
+    commit('decrement', payload.by);
+  }, payload.duration)
+}
+```
