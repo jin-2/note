@@ -585,3 +585,66 @@ export const store = new Vuex.Store({
   }
 </script>
 ```
+
+## Folder Structures
+
+- `/store` 폴더 안에 `/modules` 폴더를 만든다.
+- `counter.js`, `value.js` (예제로 만들었던 내용) 파일을 만든다.
+- `counter.js` 파일에 counter 내용만 정의한다.
+
+```javascript
+const state = {
+  counter: 0
+};
+
+const getters = { /* ... */ };
+
+const mutations = { /* ... */ };
+
+const actions = { /* ... */ };
+
+export default {
+  state,
+  getters,
+  mutations,
+  actions
+}
+```
+
+- `store.js` 파일에 counter를 module로 등록한다.
+
+```javascript
+import counter from './modules/counter';
+export const store = new Vuex.Store({
+  // ...
+    modules: {
+      counter
+    }
+  })
+```
+
+## Separate files
+
+- `/store` 안에 `store.js`파일이 거대해 질 수 있으므로, 파일을 분류한다.(?)
+- `actions.js`, `getters.js`, `mutations.js` 파일을 분리하고
+
+- `actions.js`
+
+```javascript
+export const updateValue = ({commit}, payload) => {
+  commit('updateValue', payload)
+};
+
+export const action2 = // ...
+```
+
+- `store.js`
+
+```javascript
+import * as actions from './actions';
+
+export const store = new Vuex.Store({
+  // ...
+  actions,
+})
+```
