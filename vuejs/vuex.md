@@ -477,3 +477,111 @@ asyncDecrement: ({ commit }) => {
   }, payload.duration)
 }
 ```
+
+## Two way binding(v-model) and Vuex
+
+- `store.js`
+
+```javascript
+export const store = new Vuex.Store({
+  state: {
+    value: 0
+  },
+  getters: {
+    value: state => {
+      return state.value;
+    }
+  },
+  mutations: {
+    updateValue: (state, payload) => {
+      state.value = payload;
+    }
+  },
+  actions: {
+    updateValue({commit}, payload) {
+      commit('updateValue', payload)
+    }
+  }
+});
+```
+
+- vue 파일: 하지만 아래 내용으로 value 가져올 수 있지만 값이 갱신되지 않는다.
+
+```javascript
+<template>
+  <div>
+    <h2>Home</h2>
+    <input type="text" :value="value">
+    {{ value }}
+  </div>
+</template>
+
+<script>
+  export default {
+    computed: {
+        value() {
+            return this.$store.getters.value;
+        }
+    }
+  }
+</script>
+```
+
+- 그래서 methods에서 value를 업데이트한다.
+
+```html
+<template>
+  <div>
+    <h2>Home</h2>
+    <input type="text" :value="value" @input="updateValue">
+    {{ value }}
+  </div>
+</template>
+
+<script>
+  export default {
+    computed: {
+        value() {
+            return this.$store.getters.value;
+        }
+    },
+    methods: {
+        updateValue(event) {
+          this.$store.dispatch('updateValue', event.target.value);
+        }
+    }
+  }
+</script>
+```
+
+- v-model로 value 값을 바꾸고, get, set 값을 정의했다.(단순하게 하기 위함인가?)
+
+```html
+<template>
+  <div>
+    <h2>Home</h2>
+    <input type="text" v-model="value">
+    {{ value }}
+  </div>
+</template>
+
+<script>
+  export default {
+    computed: {
+        value: {
+            get() {
+              return this.$store.getters.value;
+            },
+            set(value) {
+                this.$store.dispatch('updateValue', value);
+            }
+        }
+    },
+    methods: {
+        updateValue(event) {
+          this.$store.dispatch('updateValue', event.target.value);
+        }
+    }
+  }
+</script>
+```
