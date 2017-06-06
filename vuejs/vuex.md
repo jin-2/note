@@ -648,3 +648,11 @@ export const store = new Vuex.Store({
   actions,
 })
 ```
+
+## Using [Namespaces](https://github.com/vuejs/vuex/releases/tag/v2.1.0) to Avoid naming problems
+
+```
+namaspaced: true
+```
+
+위 옵션을 사용하면 자동으로 네임스페이스를 할당받게 된다.
