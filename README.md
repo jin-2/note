@@ -5,6 +5,7 @@
 - [Vue.js 동영상 강의 정리](https://github.com/jin-2/note/blob/master/vuejs/vuejs-video-tutorial-summary.md): 10강의 짧은 동영상으로 전체적 이해할 수 있다.
 - [Vue.js 살펴보기 - 메모](https://github.com/jin-2/note/blob/master/vuejs/vue-jeonghwan.md)
 - [Vue.js 컴포넌트 스타일 가이드](https://github.com/jin-2/note/blob/master/vuejs/vue-style-guide.md)
+- [Vuex](https://github.com/jin-2/note/blob/master/vuejs/vuex.md)
 
 ### udemy: Vue JS 2 - The Complete Guide (incl. Vuex)
 - [2. Dynamic Styling with CSS Classes](https://github.com/jin-2/note/blob/master/vuejs/class.md)
