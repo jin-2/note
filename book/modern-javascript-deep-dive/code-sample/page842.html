@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    const get = url => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.send();
+
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                console.log(JSON.parse(xhr.response));
+            } else {
+                console.error(`${xhr.status} ${xhr.statusText}`);
+            }
+        }
+    }
+    get("https://jsonplaceholder.typicode.com/posts/1");
+</script>
+</body>
+</html>

@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee85dfce-efa2-4f33-a80f-95a3c00875a2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/vuejs/workflow.md" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vuejs/component.md" afterPath="$PROJECT_DIR$/vuejs/component.md" />
+    <list default="true" id="ee85dfce-efa2-4f33-a80f-95a3c00875a2" name="Default" comment="Add functional-programming">
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/12-function.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/23-execution-context.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/page396.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/page398.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/page399.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/page402.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/page410.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/page419.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/page606.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/page810.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample/page842.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course/clean-code/boundary.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course/clean-code/type.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course/clean-code/variable.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course/clean-code/variable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
-    <ignored path="note.iws" />
-    <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,103 +32,8 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="note" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="component.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vuejs/component.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="410">
-                <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
-                <folding>
-                  <marker date="1490335203145" expanded="true" signature="157:339" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="183:301" ph="{&quot;template&quot;: '&lt;p&gt;Server Status: {{ status }}'...}" />
-                  <marker date="1490335203145" expanded="true" signature="204:253" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="217:249" ph="{&quot;status&quot;: 'Critical'...}" />
-                  <marker date="1490335203145" expanded="true" signature="313:329" ph="{&quot;el&quot;: '##app'...}" />
-                  <marker date="1490335203145" expanded="true" signature="660:671" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="786:904" ph="{&quot;template&quot;: '&lt;p&gt;Server Status: {{ status }}'...}" />
-                  <marker date="1490335203145" expanded="true" signature="807:856" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="820:852" ph="{&quot;status&quot;: 'Critical'...}" />
-                  <marker date="1490335203145" expanded="true" signature="915:971" ph="{&quot;el&quot;: '##app2'...}" />
-                  <marker date="1490335203145" expanded="true" signature="946:969" ph="{&quot;my-cmp&quot;: cmp...}" />
-                  <marker date="1490335203145" expanded="true" signature="1030:1145" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="1224:1414" ph="{&quot;template&quot;: '&lt;button v-on:click=&quot;counter += 1&quot;&gt;{{ counter }}&lt;/button&gt;'...}" />
-                  <marker date="1490335203145" expanded="true" signature="1300:1370" ph="//..." />
-                  <marker date="1490335203145" expanded="true" signature="1391:1412" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="1424:1446" ph="{&quot;el&quot;: '##example-2'...}" />
-                  <marker date="1490335203145" expanded="true" signature="1600:1648" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="1657:1755" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="1674:1746" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="1695:1744" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="1708:1740" ph="{&quot;status&quot;: 'Critical'...}" />
-                  <marker date="1490335203145" expanded="true" signature="1945:2063" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="1972:2057" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="1993:2047" ph="{&quot;title&quot;: 'Server Status'...}" />
-                  <marker date="1490335203145" expanded="true" signature="2391:2467" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="2522:2551" ph="{&quot;el&quot;: '##app'...}" />
-                  <marker date="1490335203145" expanded="true" signature="2877:3000" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="2893:2998" ph="{&quot;app-header&quot;: Header...}" />
-                  <marker date="1490335203145" expanded="true" signature="3069:3105" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="3075:3097" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="3195:3231" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="3201:3223" ph="{...}" />
-                </folding>
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-          <provider editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="3264">
-                <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-                <folding>
-                  <marker date="1490335203145" expanded="true" signature="157:339" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="183:301" ph="{&quot;template&quot;: '&lt;p&gt;Server Status: {{ status }}'...}" />
-                  <marker date="1490335203145" expanded="true" signature="204:253" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="217:249" ph="{&quot;status&quot;: 'Critical'...}" />
-                  <marker date="1490335203145" expanded="true" signature="313:329" ph="{&quot;el&quot;: '##app'...}" />
-                  <marker date="1490335203145" expanded="true" signature="660:671" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="786:904" ph="{&quot;template&quot;: '&lt;p&gt;Server Status: {{ status }}'...}" />
-                  <marker date="1490335203145" expanded="true" signature="807:856" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="820:852" ph="{&quot;status&quot;: 'Critical'...}" />
-                  <marker date="1490335203145" expanded="true" signature="915:971" ph="{&quot;el&quot;: '##app2'...}" />
-                  <marker date="1490335203145" expanded="true" signature="946:969" ph="{&quot;my-cmp&quot;: cmp...}" />
-                  <marker date="1490335203145" expanded="true" signature="1030:1145" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="1224:1414" ph="{&quot;template&quot;: '&lt;button v-on:click=&quot;counter += 1&quot;&gt;{{ counter }}&lt;/button&gt;'...}" />
-                  <marker date="1490335203145" expanded="true" signature="1300:1370" ph="//..." />
-                  <marker date="1490335203145" expanded="true" signature="1391:1412" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="1424:1446" ph="{&quot;el&quot;: '##example-2'...}" />
-                  <marker date="1490335203145" expanded="true" signature="1600:1648" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="1657:1755" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="1674:1746" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="1695:1744" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="1708:1740" ph="{&quot;status&quot;: 'Critical'...}" />
-                  <marker date="1490335203145" expanded="true" signature="1945:2063" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="1972:2057" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="1993:2047" ph="{&quot;title&quot;: 'Server Status'...}" />
-                  <marker date="1490335203145" expanded="true" signature="2391:2467" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="2522:2551" ph="{&quot;el&quot;: '##app'...}" />
-                  <marker date="1490335203145" expanded="true" signature="2877:3000" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="2893:2998" ph="{&quot;app-header&quot;: Header...}" />
-                  <marker date="1490335203145" expanded="true" signature="3069:3105" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="3075:3097" ph="{...}" />
-                  <marker date="1490335203145" expanded="true" signature="3195:3231" ph="..." />
-                  <marker date="1490335203145" expanded="true" signature="3201:3223" ph="{...}" />
-                </folding>
-              </first_editor>
-              <second_editor>
-                <js_state />
-              </second_editor>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -140,16 +57,7 @@
     <option name="width" value="2576" />
     <option name="height" value="1456" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
-  </component>
+  <component name="ProjectId" id="20ciMMILGd3MJlisikE7UIrTThP" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -193,73 +101,72 @@
       </pane>
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vue-test-code/8-Section-Code-Start/Section Code (Start)" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/book/modern-javascript-deep-dive/code-sample" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.page419.html">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
     <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
+    <configuration name="page410.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/note/book/modern-javascript-deep-dive/code-sample/page410.html" useBuiltInWebServerPort="true">
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
+    <configuration name="page419.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/note/book/modern-javascript-deep-dive/code-sample/page419.html" useBuiltInWebServerPort="true">
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
+    <configuration name="page606.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/note/book/modern-javascript-deep-dive/code-sample/page606.html" useBuiltInWebServerPort="true">
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
-      <option name="cucumberJsArguments" value="" />
-      <option name="executablePath" />
-      <option name="filePath" />
-      <method />
+    <configuration name="page810.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/note/book/modern-javascript-deep-dive/code-sample/page810.html" useBuiltInWebServerPort="true">
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+    <configuration name="page842.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/note/book/modern-javascript-deep-dive/code-sample/page842.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
       <arguments />
       <envs />
-      <method />
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui />
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
-      <method />
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.page419.html" />
+        <item itemvalue="JavaScript Debug.page606.html" />
+        <item itemvalue="JavaScript Debug.page842.html" />
+        <item itemvalue="JavaScript Debug.page810.html" />
+        <item itemvalue="JavaScript Debug.page410.html" />
+      </list>
+    </recent_temporary>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ee85dfce-efa2-4f33-a80f-95a3c00875a2" name="Default" comment="" />
@@ -270,7 +177,28 @@
       <workItem from="1490256774184" duration="948000" />
       <workItem from="1490258733580" duration="226000" />
       <workItem from="1490336960304" duration="34000" />
+      <workItem from="1636350230825" duration="3261000" />
+      <workItem from="1636457269035" duration="598000" />
+      <workItem from="1636527249319" duration="17503000" />
+      <workItem from="1637036662626" duration="4699000" />
+      <workItem from="1637571125230" duration="4511000" />
+      <workItem from="1637669107840" duration="1206000" />
+      <workItem from="1637737575214" duration="10321000" />
+      <workItem from="1638779656365" duration="2877000" />
+      <workItem from="1639390044815" duration="597000" />
+      <workItem from="1639669522169" duration="2405000" />
+      <workItem from="1639897746886" duration="4604000" />
+      <workItem from="1640501332389" duration="1214000" />
+      <workItem from="1644989490459" duration="9776000" />
     </task>
+    <task id="LOCAL-00001" summary="Add functional-programming">
+      <created>1636351698812</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1636351698812</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -299,6 +227,21 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
@@ -310,9 +253,9 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add functional-programming" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add functional-programming" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/vuejs/component.md">

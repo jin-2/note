@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // function sleep(func, delay) {
+    //     const delayuntil = Date.now() + delay;
+    //
+    //     while ( Date.now() < delayuntil );
+    //
+    //     func();
+    // }
+    //
+    // function foo() {
+    //     console.log("foo");
+    // }
+    //
+    // function bar() {
+    //     console.log("bar");
+    // }
+    //
+    // sleep(foo, 3*1000);
+    //
+    // bar();
+</script>
+
+<script>
+    function foo() {
+        console.log("foo");
+    }
+
+    function bar() {
+        console.log("bar");
+    }
+
+    function c() {
+        console.log("c");
+    }
+
+    setTimeout(foo, 0);
+
+    bar();
+    c();
+</script>
+</body>
+</html>

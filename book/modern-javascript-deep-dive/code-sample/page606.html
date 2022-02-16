@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    const mySymbol = Symbol("mySymbol");
+    const mySymbol2 = Symbol("mySymbol");
+    console.log(typeof mySymbol);
+    console.log(mySymbol == mySymbol2);
+
+    const DirectionCopy1 = {
+        UP: 1,
+        DOWN: 2,
+        LEFT: 3,
+        RIGHT: 4
+    };
+
+    const DirectionCopy2 = {
+        UP: Symbol("up"),
+        DOWN: Symbol("down"),
+        LEFT: Symbol("left"),
+        RIGHT: Symbol("right")
+    };
+
+    const Direction = Object.freeze({
+        UP: Symbol("up"),
+        DOWN: Symbol("down"),
+        LEFT: Symbol("left"),
+        RIGHT: Symbol("right")
+    });
+
+    const myDirection = Direction.UP;
+    console.log(myDirection, Direction.UP)
+
+    if (myDirection === Direction.UP) {
+        console.log("Goign UP.");
+    }
+
+    const obj = {
+        [Symbol.for("myObjKey")]: 1,
+        [Symbol.for("myObjKey2")]: 2,
+        a: "aa"
+    }
+    console.log(obj[Symbol.for("myObjKey")]);
+
+    for (const objKey in obj) {
+        console.log('??',objKey);
+    }
+    console.log(Object.keys(obj));
+    console.log(Object.getOwnPropertyNames(obj));
+    console.log(Object.getOwnPropertySymbols(obj)[1]);
+</script>
+</body>
+</html>
