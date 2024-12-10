@@ -147,3 +147,92 @@ docker rm $(docker ps -qa)
 // 실행된 컨테이너 삭제
 docker rm -f {CONTAINER_ID}
 ```
+
+#### 컨테이너 로그 조회
+
+```
+// 로그 확인
+docker logs {CONTAINER_ID}
+
+// 로그의 최근 열줄만 확인
+docker logs --tail 10 {CONTAINER_ID}
+
+// 실시간 생성된 로그
+docker logs -f {CONTAINER_ID}
+
+// 앞에 로그를 보지않고 현재부터 로그만 확인
+docker logs --tail 0 -f {CONTAINER_ID}
+```
+
+#### 실행중인 컨테이너 내부에 접속하기(exec-it)
+
+```
+// 컴퓨터를 bash 환경으로 접속하겠다.
+docker exec -it {CONTAINER_ID} bash
+
+// 퇴장
+exit
+```
+
+#### Docker volume
+컨테이너 기능이 추가되면 컨테이너에 새로운 이미지를 만들어서 컨테이너를 실행시켜야 한다. 
+이때, 기존 컨테이너의 변경된 부분을 수정하지 않고, 통째로 갈아끼우는 방식으로 교체한다.
+만약 내부에 삭제되면 안되는 데이터가 있는 경우 **볼륨**이라는 개념을 활용해야 한다.
+
+호스트의 저장 공간을 공유해서 사용하는 형태이고, 데이터를 영속적으로 저장 할 수 있다. 
+
+```
+docker run -v [호스트의 디렉토리 절대경로]:[컨테이너의 디렉토리 절대경로] [이미지명]:[태그명]
+```
+
+#### Doker로 MySQL 실행시켜보기
+[How to use this image](https://hub.docker.com/_/mysql)
+
+```
+// mysql 이미지로 컨테이너에 설치 
+docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 -d mysql
+
+docker exec -it {CONTAINER_ID} bash
+
+echo $MYSQL_ROOT_PASSWORD
+
+mysql -u root -p
+
+Enter password:
+
+show databases;
+
+// mydb 추가
+create database mydb;
+
+show databases;
+
+exit
+
+// 컨테이너 삭제
+docker rm -f {CONTAINER_ID}
+
+// 다시 mysql 설치하고
+docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 -d mysql
+docker exec -it {CONTAINER_ID} bash
+mysql -u root -p
+
+// DB에는 mydb가 없다.
+show databases;
+```
+
+##### volume 이용하여 설치
+[MySQL: Where to Store Data](https://hub.docker.com/_/mysql)
+
+```
+// 호스트에 데이터를 저장하기 위해 디렉토리를 설정하여 설치
+// 디렉토리 추가함 /Users/isujin/docker-test-host/docker-mysql/mysql-data
+// Where to Store Data: /var/lib/mysql
+docker run -e MYSQL_ROOT_PASSWORD=my-1234 -p 3306:3306 -d -v /Users/isujin/docker-test-host/docker-mysql/mysql-data:/var/lib/mysql mysql
+```
+
+**volume 주의사항**
+MySQL을 삭제하고 다시 설치할 때 password를 변경했다면 변경한 password로 MySQL에 접근하지 못한다.
+이미 지정한 volume에 이전 password로 설정이 되어있기 때문이다.
+- MySQL에서 password를 변경하거나
+- 설정한 디렉토리를 삭제하고 다시 만드는 방법이 있을 수 있다.
